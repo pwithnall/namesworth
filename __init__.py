@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 
-from corpus import HillCorpus
+from generator import HillGenerator
+import random
 
 if __name__ == '__main__':
-    corpus = HillCorpus()
-    corpus.load_file('hbdownload.csv')
-    for row in corpus.names:
-        print(row)
+    random.seed()
+    generator = HillGenerator('hbdownload.csv', 'markov-bigrams')
+    for i in range(1, 10):
+        print(generator.generate_name())
